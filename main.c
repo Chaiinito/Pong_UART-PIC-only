@@ -1,8 +1,13 @@
 const code char SINGLEPLAYER[1024];
 const code char MULTIPLAYER[1024];
+const code chat COVER[1024];
 unsigned short flag = 0;
+unsigned short y = 0;
 
 void main(){
+
+bool Master = false;
+
 
 Glcd_Init();	
 Glcd_Fill(0x00);
@@ -48,6 +53,11 @@ Delay_ms(3500);
 		
 
 			case 1:
+				init();
+				draw_net();
+				while(1);
+					y = ADC_Read(0);
+					
 			
 			case 2:
 			
@@ -81,12 +91,36 @@ Delay_ms(3500);
 				}
 			
 			if(Master == true){//Si existe Master es porque este pic es el maestro
-				
+				while(1){
+					y = ADC_Read(0);
+					
+					if(y >= 600){ //Mover hacia abajo
+						
+						
+					}
+					if(y <= 100){ //Mover hacia arriba
+						
+						
+					}
+					
+					
+				}
 			}
 			else{		//Si no existe Master es porque este pic es el esclavo
+				while(1){
+					y = ADC_Read(0);
+					
+					if(y >= 600){	//Mover hacia abajo
+						
+					}
+					if(y <= 100){ 	//Mover hacia arriba
+						
+					}
+					
+					
+				}
 				
 				
 			}
 		}
 }
-
