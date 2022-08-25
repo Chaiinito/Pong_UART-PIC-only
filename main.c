@@ -1,3 +1,8 @@
+const code char SINGLEPLAYER[1024];
+const code char MULTIPLAYER[1024];
+
+
+
 ADC_Init();
 Delay_ms(200);
 while(1):
