@@ -159,9 +159,7 @@ void move_ball(){
 	else{
 		delay ++;
 	}
-	
 }
-
 
 short check_collision(paddles Paddle, balls Ball, unsigned short x){ //Retorna 1 si detecta colision / 0 si no
 	if(x == 1){
@@ -182,27 +180,35 @@ short check_collision(paddles Paddle, balls Ball, unsigned short x){ //Retorna 1
 	}
 } 
 
-
 void draw_score(unsigned short jugador, unsigned short posx){
-
-       if (score[jugador] == 0){
-          Glcd_Write_Char('0',posx,0,1);
-       }
-       else if(score[jugador] == 1){
-            Glcd_Write_Char('1',posx,0,1);
-       }
-       else if(score[jugador] == 2){
-            Glcd_Write_Char('2',posx,0,1);
-       }
-       else if(score[jugador] == 3){
-            Glcd_Write_Char('3',posx,0,1);
-       }
-       else if(score[jugador] == 4){
-            Glcd_Write_Char('4',posx,0,1);
-       }
-       else if(score[jugador] == 5){
-            Glcd_Write_Char('5',posx,0,1);
-       }
+	unsigned short posx = 0;
+	unsigned short jugador = 0;
+		for(jugador = 0;  jugador < 2; jugador ++){
+			if(jugador == 0){
+				posx = 50;
+			}
+			if(jugador == 1){
+				posx = 74;
+			}
+			if (score[jugador] == 0){
+				Glcd_Write_Char('0',posx,0,1);
+			}
+			else if(score[jugador] == 1){
+				Glcd_Write_Char('1',posx,0,1);
+			}
+			else if(score[jugador] == 2){
+				Glcd_Write_Char('2',posx,0,1);
+			}
+			else if(score[jugador] == 3){
+				Glcd_Write_Char('3',posx,0,1);
+			}
+			else if(score[jugador] == 4){
+				Glcd_Write_Char('4',posx,0,1);
+			}
+			else if(score[jugador] == 5){
+				Glcd_Write_Char('5',posx,0,1);
+			}
+		}
 }
 
 unsigned short check_winner(){
@@ -341,8 +347,7 @@ void main(){
 					move_ia();	//Falta hacer la funcion de mover ia
 					draw_player(paddle[0].x, paddle[0].y, paddle[0].w, paddle[0].h);
 					
-					draw_score(0,50);
-					draw_score(1,74);
+					draw_score();
 					
 					check = check_winner();
 					
@@ -382,12 +387,12 @@ void main(){
 							if(Button(&PORTC,0,1,1){				//Y el que no presiono se le manda la senal para que 
 								Master_slave = '1';					// sea el esclavo
 								UART1_Write('2');
-								Master = 1;
+								Master = true;
 							}
 							else if(Master_slave == '2'){
 								Glcd_Write_Text("    ",0,0,1);
 								Glcd_Write_Text("P2",115,0,1);
-								Master = 0;
+								Master = false;
 								break;
 							}
 						}
@@ -423,15 +428,14 @@ void main(){
 					
 					move_ball();
 					draw_ball(ball.x, ball.y);
-					draw_score(0,50);//Jugador, posx
-					draw_score(1,74);
+					draw_score();
 					
 					//serial_pack_data();
 					//send_pack_data(serial_data);
 					while (UART1_Tx_Idle()!=1);
 					
 					check = check_winner;
-					if(check != 0){
+					if(check != 0){			//Solamente si check es diferente a 0 entra
 						if(check == 1){
 							Glcd_Write_Text("PC WINS", 43, 4,1);
 							GameOver();
@@ -493,3 +497,4 @@ void main(){
 			}
 		}
 }
+
