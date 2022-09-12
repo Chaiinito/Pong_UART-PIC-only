@@ -356,22 +356,22 @@ void desdata_pack(){   // Desempaquetamos los datos recibidos. actualizamos las 
     paddle[1].y = info[5] - '0';
 }
 
-void output_character(char charValue){
+void output_character(char charValue){//Funcion para mandar un solo caracter
   while (UART1_Tx_Idle()!= 1);
        UART1_Write(charValue);
 }
 
-void input_character(char char_dir){
+void input_character(char char_dir){//Funcion para leer un solo caracter
       while (UART1_Data_Ready() == 0);
       char_dir = UART1_Read();
 }
 
-void output_data(char *serial_dir){
+void output_data(char *serial_dir){//Mandar la lista info
      while (UART1_Tx_Idle()!= 1);
      UART1_Write_Text(serial_dir);
 }
 
-void input_data(char *text_dir){
+void input_data(char *text_dir){//Lee los datos hasta llegar al ok
      while(UART1_Data_Ready()==0);
      UART1_Read_Text(text_dir, "OK", 255);
 }
