@@ -29,5 +29,3 @@ the MikroC IDE.
 
 Possible communications:
   - PIC18F4550 <-> PIC18F4550
-
-Translated with www.DeepL.com/Translator (free version)
