@@ -1,5 +1,5 @@
 # Pong MikroC
-### Segundo proyecto taller de sistemas embedidos
+### Primer proyecto taller de sistemas embedidos
 Se realiza el proyecto de la imitacion del juego "PONG" en C, el cual el usuario mediante un 
   - Microcontrolador PIC18F4550
   - Pantalla GLCD 128x64 
@@ -15,7 +15,7 @@ Comunicaciones posibles:
   - PIC18F4550 <-> PIC18F4550
   
 # Pong MikroC
-### Second project embedded systems workshop
+### First project embedded systems workshop
 The project of the imitation of the game "PONG" in C is realized, which the user by means of a 
   - Microcontroller PIC18F4550
   - GLCD 128x64 screen 
